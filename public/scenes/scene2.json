@@ -1,0 +1,20 @@
+[
+  {
+    "background": "/bg/naruto.png",
+    "charSrc": "/jaden/jaden_1.png",
+    "dialogue": "dialogo 4",
+    "choices": []
+  },
+  {
+    "background": "/bg/naruto.png",
+    "charSrc": "/jaden/jaden_2.png",
+    "dialogue": "dialogo 5",
+    "choices": []
+  },
+  {
+    "background": "/bg/bachira.png",
+    "charSrc": "/jaden/jaden_2.png",
+    "dialogue": "dialogo 6",
+    "choices": []
+  }
+]
