@@ -1,39 +1,25 @@
-import Image from 'next/image';
 import { Context } from '@/contexts/context';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
+import CharImage from '../CharImage';
+import Dialogue from '../Dialogue';
+import Choices from '../Choices';
 
 export default function Scene() {
-   const { scene, selectedScene } = useContext(Context)
-   const [currentScene, setCurrentScene] = useState(0);
-
-   function nextScene() {
-      if (currentScene < scene.length - 1) {
-         setCurrentScene(currentScene + 1);
-      }
-   };
+   const { scene, currentDialogue, nextDialogue } = useContext(Context)
 
    return scene.length !== 0 ? (
       <div
          className={`h-screen flex flex-col items-center justify-center`}
-         style={{ backgroundImage: `url(${scene[currentScene].background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-         onClick={() => nextScene()}
+         style={{ backgroundImage: `url(${scene[currentDialogue].background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+         onClick={() => nextDialogue()}
       >
-         <div>
-            <Image src={scene[currentScene].charSrc} alt={''} width={400} height={800} />
-         </div>
+         <CharImage img={scene[currentDialogue].charSrc} />
 
-         <div className="bg-blue-500 text-white p-5 rounded-lg">
-            <p>{scene[currentScene].dialogue}</p>
-         </div>
+         <Dialogue text={scene[currentDialogue].dialogue} />
 
-         {scene[currentScene].choices.length !== 0 &&
-            <div>
-               {scene[currentScene].choices.map((choice: any, index: any) => (
-                  <div 
-                     key={index} 
-                     onClick={() => {selectedScene(choice.nextScene), setCurrentScene(0)}} 
-                  >{choice.text}</div>
-               ))}
+         {scene[currentDialogue].choices.length !== 0 &&
+            <div className=' absolute'>
+               <Choices arr={scene[currentDialogue]} />
             </div>
          }
 
