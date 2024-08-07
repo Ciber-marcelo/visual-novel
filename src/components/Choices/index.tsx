@@ -6,7 +6,7 @@ type ChoicesProps = {
 }
 
 export default function Choices({ arr }: ChoicesProps) {
-   const { selectedScene,  } = useContext(ContextScene)
+   const { selectedScene } = useContext(ContextScene)
 
    return (
       <div className='flex flex-col gap-2'>

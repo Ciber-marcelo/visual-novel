@@ -2,28 +2,36 @@
   {
     "background": "/bg/naruto.png",
     "charSrc": "/jaden/jaden_1.png",
-    "dialogue": "dialogo 1",
-    "choices": []
+    "dialogue": "dialogo 0, qual é o seu nome ?"
+  },
+  {
+    "background": "/bg/naruto.png",
+    "charSrc": "/jaden/jaden_1.png",
+    "inputRequired": true
   },
   {
     "background": "/bg/naruto.png",
     "charSrc": "/jaden/jaden_2.png",
-    "dialogue": "dialogo 2 blz",
-    "choices": []
+    "dialogue": "dialogo 2, ok seu nome é {name}"
   },
   {
     "background": "/bg/bachira.png",
     "charSrc": "/jaden/jaden_2.png",
-    "dialogue": "dialogo 3 caraio",
+    "dialogue": "dialogo 3",
     "choices": [
       {
-        "text": "vai para o dialogo 4",
+        "text": "vai para o dialogo 5",
         "nextScene": 2
       },
       {
-        "text": "vai para o dialogo 7",
+        "text": "vai para o dialogo 8",
         "nextScene": 3
       }
     ]
+  },
+  {
+    "background": "/bg/naruto.png",
+    "charSrc": "/jaden/jaden_1.png",
+    "dialogue": "dialogo 4, ok {name}, vamos para o dialogo que vc selecionou"
   }
 ]

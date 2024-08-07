@@ -6,6 +6,12 @@ type CharImageProps = {
 
 export default function CharImage({ img }: CharImageProps) {
    return (
-      <Image src={img} alt={''} width={400} height={800} />
+      <Image 
+         src={img} 
+         alt={''} 
+         width={400} 
+         height={800} 
+         draggable={false}
+      />
    )
 }

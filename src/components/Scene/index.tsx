@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import CharImage from '../CharImage';
 import Dialogue from '../Dialogue';
 import Choices from '../Choices';
+import Input from '../Input';
 
 export default function Scene() {
    const { scene, currentDialogue, nextDialogue } = useContext(ContextScene)
@@ -11,15 +12,25 @@ export default function Scene() {
       <div
          className={`h-screen flex flex-col items-center justify-center`}
          style={{ backgroundImage: `url(${scene[currentDialogue].background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-         onClick={() => nextDialogue()}
+         onClick={!scene[currentDialogue].inputRequired && !scene[currentDialogue].choices ? () => nextDialogue() : undefined}
       >
          <CharImage img={scene[currentDialogue].charSrc} />
 
-         <Dialogue text={scene[currentDialogue].dialogue} />
+         {scene[currentDialogue].dialogue &&
+            <div className='absolute bottom-8'>
+               <Dialogue text={scene[currentDialogue].dialogue} />
+            </div>
+         }
 
-         {scene[currentDialogue].choices.length !== 0 &&
-            <div className=' absolute'>
+         {scene[currentDialogue].choices &&
+            <div className='absolute'>
                <Choices arr={scene[currentDialogue]} />
+            </div>
+         }
+
+         {scene[currentDialogue].inputRequired &&
+            <div className='absolute'>
+               <Input />
             </div>
          }
 
