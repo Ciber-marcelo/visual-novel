@@ -1,11 +1,11 @@
-import { Context } from '@/contexts/context';
+import { ContextScene } from '@/contexts/context-scene';
 import { useContext } from 'react';
 import CharImage from '../CharImage';
 import Dialogue from '../Dialogue';
 import Choices from '../Choices';
 
 export default function Scene() {
-   const { scene, currentDialogue, nextDialogue } = useContext(Context)
+   const { scene, currentDialogue, nextDialogue } = useContext(ContextScene)
 
    return scene.length !== 0 ? (
       <div

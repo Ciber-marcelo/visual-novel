@@ -1,4 +1,4 @@
-import { Context } from '@/contexts/context';
+import { ContextScene } from '@/contexts/context-scene';
 import { useContext } from 'react';
 
 type ChoicesProps = {
@@ -6,15 +6,15 @@ type ChoicesProps = {
 }
 
 export default function Choices({ arr }: ChoicesProps) {
-   const { selectedScene,  } = useContext(Context)
+   const { selectedScene,  } = useContext(ContextScene)
 
    return (
-      <div>
+      <div className='flex flex-col gap-2'>
          {arr.choices.map((choice: any, index: any) => (
             <div 
                key={index} 
                onClick={() => { selectedScene(choice.nextScene) }}
-               className='bg-red-500'
+               className='rounded-lg p-2 bg-blue-500 text-white'
             >
                {choice.text}
             </div>

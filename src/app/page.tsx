@@ -1,15 +1,19 @@
 'use client'
 
 import Scene from "@/components/Scene";
-import { Provider } from "@/contexts/context";
+import { ProviderScene } from "@/contexts/context-scene";
+import { ProviderInfo } from "@/contexts/context-info";
+
 
 export default function Home() {
 
   return (
     <div>
-      <Provider>
-        <Scene />
-      </Provider>
+      <ProviderScene>
+        <ProviderInfo>
+          <Scene />
+        </ProviderInfo>
+      </ProviderScene>
     </div>
   );
 }

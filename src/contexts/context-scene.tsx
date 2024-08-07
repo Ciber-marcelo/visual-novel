@@ -7,9 +7,9 @@ type ContextProps = {
    nextDialogue: () => void
 }
 
-export const Context = createContext<ContextProps>({} as ContextProps);
+export const ContextScene = createContext<ContextProps>({} as ContextProps);
 
-export const Provider = ({ children }: { children: React.ReactNode }) => {
+export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
    const [scene, setScene] = useState<any>([])
    const [sceneNumber, setSceneNumber] = useState(1)
    const [currentDialogue, setCurrentDialogue] = useState(0);
@@ -38,8 +38,8 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
    };
 
    return (
-      <Context.Provider value={{ scene, currentDialogue, selectedScene, nextDialogue }}>
+      <ContextScene.Provider value={{ scene, currentDialogue, selectedScene, nextDialogue }}>
          {children}
-      </Context.Provider>
+      </ContextScene.Provider>
    );
 };
