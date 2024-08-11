@@ -1,3 +1,4 @@
+import AllScenes from "@/components/Scenes/allScenes";
 import { createContext, useEffect, useState } from "react";
    
 type ContextProps = {
@@ -14,27 +15,31 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
    const [sceneNumber, setSceneNumber] = useState(1)
    const [currentDialogue, setCurrentDialogue] = useState(0);
 
+   function loadScene(sceneN: number) {
+      const AllScenesData = AllScenes()
+      setScene(AllScenesData[sceneN - 1]);
+      // console.log('batat2')
+   };
+
    useEffect(() => {
-      async function loadScene() {
-         const response = await fetch(`/scenes/scene${sceneNumber}.json`);
-         const data = await response.json();
-         setScene(data);
-         console.log(data)
-      };
-      loadScene();
+      loadScene(sceneNumber);
    }, [sceneNumber])
 
-   //muda a cena e zera o dialogo para a scena começar do primeiro dialogo
+   //muda a cena e zera o dialogo para a cena começar do primeiro dialogo
    function selectedScene(item: any) {
       setSceneNumber(item)
       setCurrentDialogue(0)
+      // console.log('batata', item)
    }
 
    //avança o dialogo
+   //"".props.scene" serve para acessar o arr itens dentro do compoenente scene1(exemplo)
    function nextDialogue() {
-      if (currentDialogue < scene.length - 1) {
+      if (currentDialogue < scene.props.scene.length - 1) {
          setCurrentDialogue(currentDialogue + 1);
+         // console.log('batat', currentDialogue)
       }
+      // console.log('batat', scene.props.scene)
    };
 
    return (

@@ -2,7 +2,7 @@
   {
     "background": "/bg/naruto.png",
     "charSrc": "/jaden/jaden_1.png",
-    "dialogue": "dialogo 0, qual é o seu nome ?"
+    "dialogue": "dialogo 1, qual é o seu nome ?"
   },
   {
     "background": "/bg/naruto.png",
@@ -15,7 +15,7 @@
     "dialogue": "dialogo 2, ok seu nome é {name}"
   },
   {
-    "background": "/bg/bachira.png",
+    "background": "/bg/naruto.png",
     "charSrc": "/jaden/jaden_2.png",
     "dialogue": "dialogo 3",
     "choices": [

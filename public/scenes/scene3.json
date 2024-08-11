@@ -2,19 +2,16 @@
    {
       "background": "/bg/naruto.png",
       "charSrc": "/jaden/jaden_1.png",
-      "dialogue": "dialogo 8",
-      "choices": []
+      "dialogue": "dialogo 8"
    },
    {
       "background": "/bg/naruto.png",
       "charSrc": "/jaden/jaden_2.png",
-      "dialogue": "dialogo 9",
-      "choices": []
+      "dialogue": "dialogo 9"
    },
    {
       "background": "/bg/bachira.png",
       "charSrc": "/jaden/jaden_2.png",
-      "dialogue": "dialogo 10",
-      "choices": []
+      "dialogue": "dialogo 10"
    }
 ]

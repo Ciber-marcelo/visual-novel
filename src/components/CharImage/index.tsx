@@ -9,8 +9,8 @@ export default function CharImage({ img }: CharImageProps) {
       <Image 
          src={img} 
          alt={''} 
-         width={400} 
-         height={800} 
+         width={600} 
+         height={1200} 
          draggable={false}
       />
    )
