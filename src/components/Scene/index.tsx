@@ -9,8 +9,8 @@ type SceneProps = {
    scene: any
 }
 
-export default function Scene({scene}: SceneProps) {
-   const { currentDialogue, nextDialogue } = useContext(ContextScene)
+export default function Scene() {
+   const {scene, currentDialogue, nextDialogue } = useContext(ContextScene)
    // const AllScenesData = AllScenes()
    // const rrr = Scene1()
 
@@ -22,16 +22,18 @@ export default function Scene({scene}: SceneProps) {
    //       setCurrentDialogue(currentDialogue + 1);
    //       // console.log('batat', currentDialogue)
    //    }
-      
+
    // };
+
+   // const scene = sceneTESTE()
 
 
    return scene.length !== 0 ? (
       <div
-         className={`h-screen flex flex-col items-center justify-center`}
+         className={`h-screen flex flex-col items-center justify-center bg`}
          style={{ backgroundImage: `url(${scene[currentDialogue].background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
          onClick={!scene[currentDialogue].inputRequired && !scene[currentDialogue].choices ? () => nextDialogue() : undefined}
-         // onClick={() => console.log('batata', nextDialogue)}
+      // onClick={() => console.log('batata', nextDialogue)}
       >
          {scene[currentDialogue].charSrc &&
             <CharImage img={scene[currentDialogue].charSrc} />

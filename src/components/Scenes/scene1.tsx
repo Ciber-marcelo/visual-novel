@@ -1,9 +1,5 @@
-import { ContextInfo } from '@/contexts/context-info';
-import { useContext } from 'react';
-import Scene from '../Scene';
+export default function scene1(name: string) {
 
-export default function Scene1() {
-  const { name } = useContext(ContextInfo);
   const itens = [
     {
       background: "/bg/naruto.png",
@@ -43,7 +39,5 @@ export default function Scene1() {
     }
   ];
 
-  return (
-    <Scene scene={itens} />
-  );
-} 
+  return itens
+}

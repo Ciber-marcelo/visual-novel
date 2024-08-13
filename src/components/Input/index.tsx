@@ -1,11 +1,10 @@
-import { ContextInfo } from '@/contexts/context-info';
 import { ContextScene } from '@/contexts/context-scene';
 import { useContext } from 'react';
 // import { fName } from '@/scenes2/allScenes';
 
 export default function Input() {
-   const { name, placeName } = useContext(ContextInfo)
-   const { nextDialogue } = useContext(ContextScene)
+   // const { name, placeName } = useContext(ContextInfo)
+   const { name, nextDialogue, placeName } = useContext(ContextScene)
 
    function handleInputChange(e: string) {
       placeName(e);
