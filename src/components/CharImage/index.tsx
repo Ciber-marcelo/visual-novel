@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 type CharImageProps = {
-   img: any
+   img: string
 }
 
 export default function CharImage({ img }: CharImageProps) {
