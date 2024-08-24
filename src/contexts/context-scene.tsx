@@ -18,8 +18,8 @@ type ContextProps = {
    selectedScene: (item: any) => void
    nextDialogue: () => void
 
-   name: string
-   placeName: (item: string) => void
+   info: any
+   placeInfo: (item: any) => void
 }
 
 export const ContextScene = createContext<ContextProps>({} as ContextProps);
@@ -28,16 +28,21 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
    const [scene, setScene] = useState<any>([])
    const [sceneNumber, setSceneNumber] = useState(1)
    const [currentDialogue, setCurrentDialogue] = useState(0);
-   const [name, setName] = useState<string>('marcelot')
+
+   // const [name, setName] = useState<string>('marcelot')
+   const [info, setInfo] = useState<any>({
+      name: 'Duelista',
+      yugioh: ''
+   })
 
    useEffect(() => {
       const loadScene = (sceneN: number) => {
-         const AllScenesData = AllScenes(name)
+         const AllScenesData = AllScenes(info)
          setScene(AllScenesData[sceneN - 1]);
       };
 
       loadScene(sceneNumber);
-   }, [sceneNumber, name])
+   }, [sceneNumber, info])
 
    //muda a cena e zera o dialogo para a cena começar do primeiro dialogo
    const selectedScene = (item: any) => {
@@ -52,19 +57,37 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
       }
    };
 
-   //altera o nome
-   const placeName = (name: string) => {
-      setName(name)
+   //altera o info
+   const placeInfo = (info: any) => {
+      if (info.name === 'name') {
+         setInfo((prevInfo: any) => ({
+            ...prevInfo,
+            name: info.content,
+         }));
+      } else if (info.name === 'yugioh') {
+         setInfo((prevInfo: any) => ({
+            ...prevInfo,
+            yugioh: info.content,
+         }));
+      }
    }
+
+   //altera o uniforme (no futuro alterara se o personagem é homem ou mulher)
+   // const placeYugioh = (name: string) => {
+   //    setInfo((prevInfo: any) => ({
+   //       ...prevInfo,
+   //       name: name,
+   //    }));
+   // }
 
    return (
       <ContextScene.Provider value={{
-         name,
-         placeName,
          scene,
          currentDialogue,
+         info,
          selectedScene,
-         nextDialogue
+         nextDialogue,
+         placeInfo,
       }}>
          {children}
       </ContextScene.Provider>

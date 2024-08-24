@@ -16,13 +16,17 @@ export default function Scene() {
       >
          {scene[currentDialogue].char1 &&
             <div className={`${scene[currentDialogue].char1.charCss && scene[currentDialogue].char1.charCss}`}>
-               <CharImage img={scene[currentDialogue].char1.charSrc} />
+               <CharImage 
+                  charImg={scene[currentDialogue].char1.charSrc} 
+                  faceImg={scene[currentDialogue].char1.faceSrc}
+               />
             </div>
          }
 
          {scene[currentDialogue].char2 &&
             <div className={`${scene[currentDialogue].char2.charCss && scene[currentDialogue].char2.charCss}`}>
-               <CharImage img={scene[currentDialogue].char2.charSrc} />
+               charImg={scene[currentDialogue].char1.charSrc} 
+               faceImg={scene[currentDialogue].char1.faceSrc}
             </div>
          }
 
