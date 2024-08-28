@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 
 type SceneProps = {
    background?: string
+   music?: string
    char1?: any
    char2?: any
    dialogueName?: string
@@ -29,7 +30,6 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
    const [sceneNumber, setSceneNumber] = useState(1)
    const [currentDialogue, setCurrentDialogue] = useState(0);
 
-   // const [name, setName] = useState<string>('marcelot')
    const [info, setInfo] = useState<any>({
       name: 'Duelista',
       yugioh: ''
@@ -57,7 +57,7 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
       }
    };
 
-   //altera o info
+   //altera o info (ex: nome, roupa, genero etc)
    const placeInfo = (info: any) => {
       if (info.name === 'name') {
          setInfo((prevInfo: any) => ({
@@ -71,14 +71,6 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
          }));
       }
    }
-
-   //altera o uniforme (no futuro alterara se o personagem é homem ou mulher)
-   // const placeYugioh = (name: string) => {
-   //    setInfo((prevInfo: any) => ({
-   //       ...prevInfo,
-   //       name: name,
-   //    }));
-   // }
 
    return (
       <ContextScene.Provider value={{

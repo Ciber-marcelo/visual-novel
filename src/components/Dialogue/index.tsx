@@ -3,11 +3,14 @@ type DialogueProps = {
    text: string
 }
 
-export default function Dialogue({name, text}: DialogueProps) {
+export default function Dialogue({ name, text }: DialogueProps) {
    return (
       <div className="w-[600px] h-[150px] flex flex-col bg-blue-500 text-white p-4 rounded-lg">
-         <p className="h-5 flex items-center pl-2">{name}</p>
-         <div className="h-[2px] w-[150px] bg-black opacity-30"></div>
+         {name &&
+            <div className="flex w-fit px-4 border-b-2 border-b-black">
+               <p className="h-5 flex items-center">{name}</p>
+            </div>
+         }
          <p className="pt-2">{text}</p>
       </div>
    )

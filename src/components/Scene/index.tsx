@@ -4,16 +4,22 @@ import CharImage from '../CharImage';
 import Dialogue from '../Dialogue';
 import Choices from '../Choices';
 import Input from '../Input';
+import Music from '../Music';
 
 export default function Scene() {
    const { scene, currentDialogue, nextDialogue } = useContext(ContextScene)
 
    return scene.length !== 0 ? (
       <div
-         className={`h-screen flex flex-col items-center justify-center bg`}
+         className={`h-screen flex flex-col items-center justify-center`}
          style={{ backgroundImage: `url(${scene[currentDialogue].background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
          onClick={!scene[currentDialogue].inputRequired && !scene[currentDialogue].choices ? () => nextDialogue() : undefined}
       >
+         
+         {scene[currentDialogue].music &&
+            <Music musicSrc={scene[currentDialogue].music}/>
+         }
+
          {scene[currentDialogue].char1 &&
             <div className={`${scene[currentDialogue].char1.charCss && scene[currentDialogue].char1.charCss}`}>
                <CharImage 
