@@ -92,13 +92,13 @@ export default function scene1(info: any) {
     // }
 
     {
-      background: "/backgrounds/da.jpg",
-      music: "/musics/m1.mp3",
+      background: "./backgrounds/da.jpg",
+      music: "./musics/m1.mp3",
       dialogue: "Esse é o seu primeiro dia na academia de duelos, escolha seu dormitorio.",
     },
     {
-      background: "/backgrounds/da.jpg",
-      // music: "/musics/m1.mp3",
+      background: "./backgrounds/da.jpg",
+      // music: "./musics/m1.mp3",
       dialogue: "(O dormitorio Ra amarelo não esta disponivel, já tem muito duelista merda la.)",
       choices: [
         {
@@ -112,40 +112,40 @@ export default function scene1(info: any) {
       ]
     },
     {
-      background: "/backgrounds/da.jpg",
-      music: "/musics/m1.mp3",
+      background: "./backgrounds/da.jpg",
+      music: "./musics/m1.mp3",
       char1: {
-        charSrc: info.yugioh === 'slifer' ? '/characters/Vagabond/0.png' : '/characters/Vagrant/0.png',
-        faceSrc: info.yugioh === 'slifer' ? '/characters/Vagabond/1.png' : '/characters/Vagrant/1.png',
+        charSrc: info.yugioh === 'slifer' ? './characters/Vagabond/0.png' : './characters/Vagrant/0.png',
+        faceSrc: info.yugioh === 'slifer' ? './characters/Vagabond/1.png' : './characters/Vagrant/1.png',
         // charCss: "bg-red-500"
       },
       dialogue: `Esse é o seu uniforme do dormitorio ${info.yugioh === 'slifer' ? 'slifer vermelho' : 'obelisco azul'}`,
     },
     {
-      background: "/backgrounds/da.jpg",
-      music: "/musics/m1.mp3",
+      background: "./backgrounds/da.jpg",
+      music: "./musics/m1.mp3",
       char1: {
-        charSrc: info.yugioh === 'slifer' ? '/characters/Vagabond/0.png' : '/characters/Vagrant/0.png',
-        faceSrc: info.yugioh === 'slifer' ? '/characters/Vagabond/1.png' : '/characters/Vagrant/1.png',
+        charSrc: info.yugioh === 'slifer' ? './characters/Vagabond/0.png' : './characters/Vagrant/0.png',
+        faceSrc: info.yugioh === 'slifer' ? './characters/Vagabond/1.png' : './characters/Vagrant/1.png',
       },
       dialogue: "Qual é o seu nome, duelista ?",
       inputRequired: true
     },
     {
-      background: "/backgrounds/da.jpg",
-      music: "/musics/m1.mp3",
+      background: "./backgrounds/da.jpg",
+      music: "./musics/m1.mp3",
       char1: {
-        charSrc: info.yugioh === 'slifer' ? '/characters/Vagabond/0.png' : '/characters/Vagrant/0.png',
-        faceSrc: info.yugioh === 'slifer' ? '/characters/Vagabond/1.png' : '/characters/Vagrant/1.png',
+        charSrc: info.yugioh === 'slifer' ? './characters/Vagabond/0.png' : './characters/Vagrant/0.png',
+        faceSrc: info.yugioh === 'slifer' ? './characters/Vagabond/1.png' : './characters/Vagrant/1.png',
       },
       dialogue: `Ok ${info.name}, se prepare para iniciar na cademia de duelos.`,
     },
     {
-      background: "/backgrounds/da.jpg",
-      music: "/musics/m2.mp3",
+      background: "./backgrounds/da.jpg",
+      music: "./musics/m2.mp3",
       char1: {
-        charSrc: info.yugioh === 'slifer' ? '/characters/Vagabond/0.png' : '/characters/Vagrant/0.png',
-        faceSrc: info.yugioh === 'slifer' ? '/characters/Vagabond/1.png' : '/characters/Vagrant/1.png',
+        charSrc: info.yugioh === 'slifer' ? './characters/Vagabond/0.png' : './characters/Vagrant/0.png',
+        faceSrc: info.yugioh === 'slifer' ? './characters/Vagabond/1.png' : './characters/Vagrant/1.png',
       },
       dialogue: `Certo, está na hora de eu derrotar uns otarios, quem será o meu primeiro oponente nessa escola.`,
       dialogueName: info.name

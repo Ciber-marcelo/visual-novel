@@ -9,21 +9,25 @@ import Music from '../Music';
 export default function Scene() {
    const { scene, currentDialogue, nextDialogue } = useContext(ContextScene)
 
-   return scene.length !== 0 ? (
+   if (scene.length === 0) {
+      return <div>Loading...</div>;
+   }
+
+   return (
       <div
          className={`h-screen flex flex-col items-center justify-center`}
          style={{ backgroundImage: `url(${scene[currentDialogue].background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
          onClick={!scene[currentDialogue].inputRequired && !scene[currentDialogue].choices ? () => nextDialogue() : undefined}
       >
-         
+
          {scene[currentDialogue].music &&
-            <Music musicSrc={scene[currentDialogue].music}/>
+            <Music musicSrc={scene[currentDialogue].music} />
          }
 
          {scene[currentDialogue].char1 &&
             <div className={`${scene[currentDialogue].char1.charCss && scene[currentDialogue].char1.charCss}`}>
-               <CharImage 
-                  charImg={scene[currentDialogue].char1.charSrc} 
+               <CharImage
+                  charImg={scene[currentDialogue].char1.charSrc}
                   faceImg={scene[currentDialogue].char1.faceSrc}
                />
             </div>
@@ -31,7 +35,7 @@ export default function Scene() {
 
          {scene[currentDialogue].char2 &&
             <div className={`${scene[currentDialogue].char2.charCss && scene[currentDialogue].char2.charCss}`}>
-               charImg={scene[currentDialogue].char1.charSrc} 
+               charImg={scene[currentDialogue].char1.charSrc}
                faceImg={scene[currentDialogue].char1.faceSrc}
             </div>
          }
@@ -56,10 +60,7 @@ export default function Scene() {
                <Input />
             </div>
          }
-
       </div>
-   ) : (
-      <div>Loading...</div>
    )
 }
 
