@@ -1,26 +1,48 @@
 {
   "name": "visual-novel",
   "version": "0.1.0",
+  "author": "Marcelones",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "concurrently \"npm run next\" \"npm run electron\"",
+    "next": "next dev",
+    "electron": "wait-on http://localhost:3000 && electron .",
+    "build": "next build && electron-builder",
+    "start": "serve out -s",
     "lint": "next lint"
   },
   "dependencies": {
+    "concurrently": "^9.0.0",
+    "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.5"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@types/debug": "^4.1.12",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "electron": "^32.0.2",
+    "electron-builder": "^25.0.5",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5"
-  }
+    "typescript": "^5",
+    "wait-on": "^8.0.0"
+  },
+  "build": {
+    "appId": "com.marcelones.visualnovel",
+    "mac": {
+      "category": "public.app-category.games"
+    },
+    "files": [
+      "main.js",
+      "out/**/*"
+    ],
+    "directories": {
+      "buildResources": "build"
+    }
+  },
+  "main": "main.js"
 }
