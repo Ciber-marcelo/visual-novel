@@ -5,6 +5,8 @@ import Dialogue from '../Dialogue';
 import Choices from '../Choices';
 import Input from '../Input';
 import Music from '../Music';
+import ButtonSave from '../ButtonSave';
+import ButtonLoad from '../ButtonLoad';
 
 export default function Scene() {
    const { scene, currentDialogue, nextDialogue } = useContext(ContextScene)
@@ -17,8 +19,16 @@ export default function Scene() {
       <div
          className={`h-screen flex flex-col items-center justify-center`}
          style={{ backgroundImage: `url(${scene[currentDialogue].background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-         onClick={!scene[currentDialogue].inputRequired && !scene[currentDialogue].choices ? () => nextDialogue() : undefined}
-      >
+         
+      >  
+         <button onClick={!scene[currentDialogue].inputRequired && !scene[currentDialogue].choices ? () => nextDialogue() : undefined}>
+            NEXT
+         </button>
+         <ButtonSave name={'Salvar Jogo 1'} saveFileName={'savegame1.json'}/>
+         <ButtonSave name={'Salvar Jogo 2'} saveFileName={'savegame2.json'}/>
+
+         <ButtonLoad name={'Carregar Jogo 1'} saveFileName={'savegame1.json'}/>
+         <ButtonLoad name={'Carregar Jogo 2'} saveFileName={'savegame2.json'}/>
 
          {scene[currentDialogue].music &&
             <Music musicSrc={scene[currentDialogue].music} />
@@ -50,7 +60,7 @@ export default function Scene() {
          }
 
          {scene[currentDialogue].choices &&
-            <div className='absolute'>
+            <div className=''>
                <Choices arr={scene[currentDialogue]} />
             </div>
          }

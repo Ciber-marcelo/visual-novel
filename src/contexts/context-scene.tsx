@@ -14,6 +14,7 @@ type SceneProps = {
 
 type ContextProps = {
    scene: SceneProps[]
+   sceneNumber: number
    currentDialogue: number
 
    selectedScene: (item: any) => void
@@ -21,6 +22,7 @@ type ContextProps = {
 
    info: any
    placeInfo: (item: any) => void
+   loadData: (item: any) => void
 }
 
 export const ContextScene = createContext<ContextProps>({} as ContextProps);
@@ -32,7 +34,9 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
 
    const [info, setInfo] = useState<any>({
       name: 'Duelista',
-      yugioh: ''
+      yugioh: '',
+      scene: 1,
+      dialogId: 0
    })
 
    useEffect(() => {
@@ -57,29 +61,40 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
       }
    };
 
-   //altera o info (ex: nome, roupa, genero etc)
+   //altera UMA informção do info (ex: nome, roupa ou genero)
    const placeInfo = (info: any) => {
-      if (info.name === 'name') {
-         setInfo((prevInfo: any) => ({
-            ...prevInfo,
-            name: info.content,
-         }));
-      } else if (info.name === 'yugioh') {
-         setInfo((prevInfo: any) => ({
-            ...prevInfo,
-            yugioh: info.content,
-         }));
-      }
-   }
+      setInfo((prevInfo: any) => ({
+         ...prevInfo,
+         [info.name]: info.content
+      }));
+   };
+
+   //Altera o info com os dados do save
+   const loadData = (gameData: any) => {
+      setInfo((prevInfo: any) => ({
+         ...prevInfo,
+         ...gameData,  
+         // Carrega todos os dados do save, exceto `scene` e `dialogId`
+         name: gameData.name, 
+         yugioh: gameData.yugioh, 
+         scene: prevInfo.scene,  // Garante que `scene` não seja alterado
+         dialogId: prevInfo.dialogId,  // Garante que `dialogId` não seja alterado
+      }));
+
+      setCurrentDialogue(gameData.dialogId)
+      setSceneNumber(gameData.scene)
+   };
 
    return (
       <ContextScene.Provider value={{
          scene,
+         sceneNumber,
          currentDialogue,
          info,
          selectedScene,
          nextDialogue,
          placeInfo,
+         loadData,
       }}>
          {children}
       </ContextScene.Provider>

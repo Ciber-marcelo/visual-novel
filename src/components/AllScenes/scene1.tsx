@@ -92,11 +92,13 @@ export default function scene1(info: any) {
     // }
 
     {
+      id: 1,
       background: "./backgrounds/da.jpg",
       music: "./musics/m1.mp3",
       dialogue: "Esse é o seu primeiro dia na academia de duelos, escolha seu dormitorio.",
     },
     {
+      id: 2,
       background: "./backgrounds/da.jpg",
       // music: "./musics/m1.mp3",
       dialogue: "(O dormitorio Ra amarelo não esta disponivel, já tem muito duelista merda la.)",
@@ -112,6 +114,7 @@ export default function scene1(info: any) {
       ]
     },
     {
+      id: 3,
       background: "./backgrounds/da.jpg",
       music: "./musics/m1.mp3",
       char1: {
@@ -122,6 +125,7 @@ export default function scene1(info: any) {
       dialogue: `Esse é o seu uniforme do dormitorio ${info.yugioh === 'slifer' ? 'slifer vermelho' : 'obelisco azul'}`,
     },
     {
+      id: 4,
       background: "./backgrounds/da.jpg",
       music: "./musics/m1.mp3",
       char1: {
@@ -132,6 +136,7 @@ export default function scene1(info: any) {
       inputRequired: true
     },
     {
+      id: 5,
       background: "./backgrounds/da.jpg",
       music: "./musics/m1.mp3",
       char1: {
@@ -141,6 +146,7 @@ export default function scene1(info: any) {
       dialogue: `Ok ${info.name}, se prepare para iniciar na cademia de duelos.`,
     },
     {
+      id: 6,
       background: "./backgrounds/da.jpg",
       music: "./musics/m2.mp3",
       char1: {

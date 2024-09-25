@@ -38,6 +38,7 @@
     },
     "files": [
       "main.js",
+      "preload.js",
       "out/**/*"
     ],
     "directories": {
