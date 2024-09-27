@@ -1,16 +1,18 @@
-import type { Metadata } from "next";
-// import { Inter } from "next/font/google"; //usar fonts do next gera um erro ao criar o eecutavel (se precisar mudar a fonte no futuro pesquise)
-import "./globals.css";
+'use client'
 
-export const metadata: Metadata = {
-  title: "VN",
-  description: "VN next app",
-};
+import "./globals.css";
+// import { Inter } from "next/font/google"; //usar fonts do next gera um erro ao criar o eecutavel (se precisar mudar a fonte no futuro pesquise)
+
+import { ProviderScene } from "@/contexts/context-scene";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ProviderScene>
+          {children}
+        </ProviderScene>
+      </body>
     </html>
   );
 }

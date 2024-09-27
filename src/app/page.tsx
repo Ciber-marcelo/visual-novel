@@ -1,14 +1,11 @@
 'use client'
 
-import { ProviderScene } from "@/contexts/context-scene";
-import Scene from "@/components/Scene";
+import MenuMain from "@/components/MenuMain";
 
 export default function Home() {
   return (
     <div>
-      <ProviderScene>
-          <Scene />
-      </ProviderScene>
+      <MenuMain />
     </div>
   );
 }
