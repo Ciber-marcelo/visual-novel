@@ -15,12 +15,12 @@ function createWindow() {
   });
 
   //aqui eu verifico se estou rodando o projeto no modo de desenvolvimento(npm run dev) ou de produção(npm run build).
-  //se tiver rodando no modo de desenvolvimento usarei como base o servidor 'http://localhost:3000' para gerar a janela da aplicação.
-  //se tiver rodando no modo de produção usarei como base o arquivo estatico 'out/index.html', como base para criar o executavel do electron.
+  //no modo de produção eu uso o arquivo estatico 'out/index.html', para criar o executavel.
+  //no modo de desenvolvimento eu uso o servidor 'http://localhost:3000' para gerar a janela do app.
   const startURL = app.isPackaged
-    ? `file://${path.join(__dirname, 'out/index.html')}`
-    : 'http://localhost:3000';
-
+    ? `file://${path.join(__dirname, 'out/index.html')}`  
+    : 'http://localhost:3000';                            
+  
   win.loadURL(startURL);
 
   // Remove a barra de menu do electron no modo de produção
@@ -29,12 +29,10 @@ function createWindow() {
   // }
 }
 
-// Função para salvar o progresso do jogo
-//pesquise o "event" se n ta usando pra nada
+// Função para salvar o progresso do jogo ("event" deve parmanecer mesmo não sendo utilizado)
 ipcMain.handle('save-game', async (event, { gameData, saveFileName }) => {
-
-  // Define o caminho da pasta e do arquivo de save
-  const saveDir = path.join(path.dirname(app.getPath('exe')), 'saves');
+  // Define o caminho da pasta 'saves' no modo de produção ou de desenvovlimento
+  const saveDir = path.join(app.isPackaged ? path.dirname(app.getPath('exe')) : __dirname, 'saves');
   const saveFilePath = path.join(saveDir, saveFileName);
 
   try {
@@ -42,7 +40,6 @@ ipcMain.handle('save-game', async (event, { gameData, saveFileName }) => {
     if (!fs.existsSync(saveDir)) {
       fs.mkdirSync(saveDir);
     }
-
     // Cria/substitui o arquivo de save na pasta 'saves'
     fs.writeFileSync(saveFilePath, JSON.stringify(gameData));
     return { success: true };
@@ -54,8 +51,9 @@ ipcMain.handle('save-game', async (event, { gameData, saveFileName }) => {
 
 // Função para carregar o progresso do jogo
 ipcMain.handle('load-game', async (event, saveFileName) => {
-  // Define o caminho do arquivo de save
-  const saveFilePath = path.join(path.dirname(app.getPath('exe')), 'saves', saveFileName);
+  // Define o caminho da pasta 'saves' no modo de produção ou de desenvovlimento
+  const saveDir = path.join(app.isPackaged ? path.dirname(app.getPath('exe')) : __dirname, 'saves');
+  const saveFilePath = path.join(saveDir, saveFileName);
 
   try {
     //Verifica se o arquivo de save existe
@@ -63,11 +61,38 @@ ipcMain.handle('load-game', async (event, saveFileName) => {
       const fileContent = fs.readFileSync(saveFilePath, 'utf-8');
       return JSON.parse(fileContent);
     } else {
-      return null; // Arquivo não existe
+      return null;
     }
   } catch (error) {
     console.error('Erro ao carregar o jogo:', error);
     return null;
+  }
+});
+
+// Função para ler a pasta de saves
+ipcMain.handle('get-save-files', async () => {
+  // Define o caminho da pasta 'saves' no modo de produção ou de desenvovlimento
+  const saveDir = path.join(app.isPackaged ? path.dirname(app.getPath('exe')) : __dirname, 'saves');
+
+  try {
+    // Verifica se a pasta 'saves' existe e retorna os arquivos JSON
+    if (fs.existsSync(saveDir)) {
+      const files = fs.readdirSync(saveDir).filter((file) => file.endsWith('.json'));
+
+      // Mapeia o nome do arquivo com seu conteúdo
+      const fileContents = files.map((file) => {
+        const filePath = path.join(saveDir, file);
+        const content = fs.readFileSync(filePath, 'utf-8');
+        return { fileName: file, content: JSON.parse(content) };  // Parse para retornar como objeto
+      });
+
+      return fileContents; // Retorna o nome e o conteúdo dos arquivos
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error('Erro ao ler arquivos de save:', error);
+    return [];
   }
 });
 

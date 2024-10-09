@@ -23,6 +23,9 @@ type ContextProps = {
    info: any
    placeInfo: (item: any) => void
    loadData: (item: any) => void
+
+   page: any
+   selectPage: (item: any) => void
 }
 
 export const ContextScene = createContext<ContextProps>({} as ContextProps);
@@ -31,6 +34,8 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
    const [scene, setScene] = useState<any>([])
    const [sceneNumber, setSceneNumber] = useState(1)
    const [currentDialogue, setCurrentDialogue] = useState(0);
+   const [page, setPage] = useState(1);
+
 
    const [info, setInfo] = useState<any>({
       name: 'Duelista',
@@ -85,6 +90,11 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
       setSceneNumber(gameData.scene)
    };
 
+   //troca a pagina
+   const selectPage = (n: any) => {
+      setPage(n)
+   }
+
    return (
       <ContextScene.Provider value={{
          scene,
@@ -95,6 +105,8 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
          nextDialogue,
          placeInfo,
          loadData,
+         selectPage,
+         page
       }}>
          {children}
       </ContextScene.Provider>

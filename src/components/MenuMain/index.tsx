@@ -1,10 +1,9 @@
 import { ContextScene } from '@/contexts/context-scene';
 import { useContext } from 'react';
-import Link from "next/link";
 import ButtonMenu from "./ButtonMenu";
 
 export default function MenuMain() {
-   const { loadData } = useContext(ContextScene)
+   const { loadData, selectPage } = useContext(ContextScene)
 
    const handleStartGame = () => {
       const gameData = {
@@ -15,16 +14,13 @@ export default function MenuMain() {
       }
 
       loadData(gameData);
+      selectPage(2)
    };
 
    return (
-      <div className='flex flex-col gap-4 items-center'>
-         <Link href="/pageGame" >
-            <ButtonMenu name="Iniciar" onClick={handleStartGame} />
-         </Link>
-         <Link href="/pageData" >
-            <ButtonMenu name="Carregar jogo" />
-         </Link>
+      <div className='flex flex-col pt-8 gap-4 items-center'>
+         <ButtonMenu name="Iniciar" onClick={handleStartGame} />
+         <ButtonMenu name="Carregar jogo" onClick={() => selectPage(3)} />
          <ButtonMenu name="Abrir configurações" />
          <ButtonMenu name="Sair do jogo" />
       </div>

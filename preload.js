@@ -5,4 +5,5 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('electron', {
   saveGame: (gameData, saveFileName) => ipcRenderer.invoke('save-game', {gameData, saveFileName}),
   loadGame: (saveFileName) => ipcRenderer.invoke('load-game', saveFileName),
+  getSaveFiles: () => ipcRenderer.invoke('get-save-files'),
 });

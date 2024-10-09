@@ -7,10 +7,9 @@ import Input from '../Input';
 import Music from '../Music';
 import ButtonSave from '../ButtonSave';
 import ButtonLoad from '../ButtonLoad';
-import Link from 'next/link';
 
 export default function Scene() {
-   const { scene, currentDialogue, nextDialogue } = useContext(ContextScene)
+   const { scene, currentDialogue, nextDialogue, selectPage } = useContext(ContextScene)
 
    if (scene.length === 0) {
       return <div>Loading...</div>;
@@ -31,11 +30,7 @@ export default function Scene() {
          <ButtonLoad name={'Carregar Jogo 1'} saveFileName={'savegame1.json'}/>
          <ButtonLoad name={'Carregar Jogo 2'} saveFileName={'savegame2.json'}/>
 
-         <Link href={"/"} className='bg-green-500'>
-            <button>menu</button>
-         </Link>
-         <button onClick={() => console.log(currentDialogue)}>TTT</button>
-
+         <button onClick={() => selectPage(1)}>MENU</button>
 
          {scene[currentDialogue].music &&
             <Music musicSrc={scene[currentDialogue].music} />

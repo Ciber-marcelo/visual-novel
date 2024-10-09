@@ -1,11 +1,14 @@
 'use client'
 
-import MenuMain from "@/components/MenuMain";
+import { ProviderScene } from "@/contexts/context-scene";
+import MainPage from "@/components/MainPage";
 
 export default function Home() {
   return (
     <div>
-      <MenuMain />
+      <ProviderScene>
+        <MainPage />
+      </ProviderScene>
     </div>
   );
 }
