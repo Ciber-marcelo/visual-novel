@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ContextScene } from '@/contexts/context-scene';
 import { useContext } from 'react';
 
-export default function MenuData() {
+export default function MenuLoadGame() {
    const { loadData, selectPage } = useContext(ContextScene)
    const [saveFiles, setSaveFiles] = useState<{ fileName: string; content: any }[]>([]);
 
