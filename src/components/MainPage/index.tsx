@@ -3,6 +3,7 @@ import { ContextScene } from "@/contexts/context-scene";
 import MenuMain from "../MenuMain";
 import Scene from "../Scene";
 import MenuLoadGame from "../MenuLoadGame";
+import MenuSaveGame from "../MenuSaveGame";
 
 export default function MainPage() {
    const { page } = useContext(ContextScene)
@@ -17,5 +18,9 @@ export default function MainPage() {
 
    if (page === 3) {
       return <div><MenuLoadGame /></div>;
+   };
+
+   if (page === 4) {
+      return <div><MenuSaveGame /></div>;
    };
 }

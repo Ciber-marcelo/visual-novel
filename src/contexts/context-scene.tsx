@@ -36,7 +36,6 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
    const [currentDialogue, setCurrentDialogue] = useState(0);
    const [page, setPage] = useState(1);
 
-
    const [info, setInfo] = useState<any>({
       name: 'Duelista',
       yugioh: '',
