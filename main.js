@@ -6,7 +6,9 @@ function createWindow() {
   //aqui estão as configurações da aplicaçao, como por exemplo o tamanho da janela entre outros(pesquise para entedner melhor)
   const win = new BrowserWindow({
     width: 800,
-    height: 600,
+    height: 450,
+    // minWidth: 800,
+    // minHeight: 450,
     webPreferences: {
       preload: path.join(app.getAppPath(), 'preload.js'),
       nodeIntegration: false, // Desabilitar por segurança
