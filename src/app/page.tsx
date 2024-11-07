@@ -1,14 +1,19 @@
 'use client'
 
 import { ProviderScene } from "@/contexts/context-scene";
-import MainPage from "@/components/MainPage";
+import CurrentPage from "@/components/CurrentPage";
+import ResponsiveDiv from "@/components/ResponsiveDiv";
 
 export default function Home() {
   return (
-    <div>
-      <ProviderScene>
-        <MainPage />
-      </ProviderScene>
+    <div className="w-screen h-screen flex items-center justify-center overflow-hidden">
+      <div className="aspect-full-width aspect-full-height aspect-[16/9] bg-red-400">
+        <ResponsiveDiv>
+          <ProviderScene>
+            <CurrentPage />
+          </ProviderScene>
+        </ResponsiveDiv>
+      </div>
     </div>
   );
 }

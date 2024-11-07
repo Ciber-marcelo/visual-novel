@@ -5,11 +5,11 @@ import Scene from "../Scene";
 import MenuLoadGame from "../MenuLoadGame";
 import MenuSaveGame from "../MenuSaveGame";
 
-export default function MainPage() {
+export default function CurrentPage() {
    const { page } = useContext(ContextScene)
 
    if (page === 1) {
-      return <div><MenuMain /></div>;
+      return <MenuMain />;
    };
    
    if (page === 2) {
