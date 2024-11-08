@@ -11,16 +11,16 @@ export default function CurrentPage() {
    if (page === 1) {
       return <MenuMain />;
    };
-   
+
    if (page === 2) {
-      return <div><Scene /></div>;
+      return <Scene />;
    };
 
    if (page === 3) {
-      return <div><MenuLoadGame /></div>;
+      return <MenuLoadGame />;
    };
 
    if (page === 4) {
-      return <div><MenuSaveGame /></div>;
+      return <MenuSaveGame />;
    };
 }

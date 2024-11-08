@@ -16,8 +16,8 @@ export default function ButtonMenu({ name, onClick }: ButtonMenuProps) {
                hover:from-[#1D265D] hover:to-[#3E4EB1] 
                text-white
                text-[28px] 
-               font-extrabold
-               text-stroke
+               font-semibold
+               opacity-[0.9]
             ">
                {name}
             </div>
