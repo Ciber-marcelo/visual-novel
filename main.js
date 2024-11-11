@@ -6,9 +6,9 @@ function createWindow() {
   //aqui estão as configurações da aplicaçao, como por exemplo o tamanho da janela entre outros(pesquise para entedner melhor)
   const win = new BrowserWindow({
     width: 800,
-    height: 450,
-    // minWidth: 800,
-    // minHeight: 450,
+    height: 479,
+    minWidth: 400,
+    minHeight: 254,
     webPreferences: {
       preload: path.join(app.getAppPath(), 'preload.js'),
       nodeIntegration: false, // Desabilitar por segurança
@@ -26,9 +26,14 @@ function createWindow() {
   win.loadURL(startURL);
 
   // Remove a barra de menu do electron no modo de produção
-  // if (app.isPackaged) {
-  //   win.setMenu(null);
-  // }
+  if (app.isPackaged) {
+    win.setMenu(null);
+  }
+
+  // Captura o evento de fechamento
+  ipcMain.on('close-app', () => {
+    app.quit();
+  });
 }
 
 // Função para salvar o progresso do jogo ("event" deve parmanecer mesmo não sendo utilizado)

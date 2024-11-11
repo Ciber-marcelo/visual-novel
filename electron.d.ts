@@ -9,6 +9,7 @@ declare global {
       saveGame: (gameData: any, saveFileName: string) => Promise<{ success: boolean, error?: string }>;
       loadGame: (saveFileName: string) => Promise<{ success: boolean, data?: any, error?: string }>;
       getSaveFiles: () => Promise<{ fileName: string, content: any }[]>;
+      closeApp: () => void;
     };
   }
 }
