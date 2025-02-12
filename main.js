@@ -103,6 +103,25 @@ ipcMain.handle('get-save-files', async () => {
   }
 });
 
+// Função para deletar um arquivo de save
+ipcMain.handle('delete-save', async (event, saveFileName) => {
+  // Define o caminho da pasta 'saves' no modo de produção ou de desenvovlimento
+  const saveDir = path.join(app.isPackaged ? path.dirname(app.getPath('exe')) : __dirname, 'saves');
+  const saveFilePath = path.join(saveDir, saveFileName);
+
+  try {
+    if (fs.existsSync(saveFilePath)) {
+      fs.unlinkSync(saveFilePath); // Deleta o arquivo
+      return { success: true };
+    } else {
+      return { success: false, error: 'Arquivo não encontrado' };
+    }
+  } catch (error) {
+    console.error('Erro ao deletar o arquivo de save:', error);
+    return { success: false, error: error.message };
+  }
+});
+
 //O codigo a baixo serve para o electron funcinar tanto no windows quanto no mac(reveja essa parte para entender melhor)
 app.whenReady().then(() => {
   createWindow();

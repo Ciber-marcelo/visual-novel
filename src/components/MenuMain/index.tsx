@@ -1,6 +1,6 @@
 import { ContextScene } from '@/contexts/context-scene';
 import { useContext } from 'react';
-import ButtonMenu from "./ButtonMenu";
+import ButtonMenu from "../ButtonMenu";
 import Image from 'next/image';
 
 export default function MenuMain() {
@@ -35,7 +35,7 @@ export default function MenuMain() {
             draggable={false}
          />
 
-         <div className="w-[500px] h-[680px] flex flex-col ml-[165px] mt-[100px] gap-5 justify-center items-center bg-[#1D265D] border-[8px] border-black">
+         <div className="w-[500px] h-[680px] flex flex-col ml-[165px] mt-[100px] p-[42px] gap-5 justify-center bg-[#1D265D] border-[8px] border-black">
             <ButtonMenu name="NOVO JOGO" onClick={handleStartGame} />
             <ButtonMenu name="CARREGAR JOGO" onClick={() => selectPage(3)} />
             <ButtonMenu name="CONQUISTAS" disabled={true}/>
