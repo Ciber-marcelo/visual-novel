@@ -6,9 +6,15 @@
   body {
     @apply bg-black
   }
-  .font-border {
-    -webkit-text-stroke: 3px black;
-  }
+
+  .screen-FHD { @apply w-[1920px] h-[1080px] }
+  .container-menu { @apply w-[500px] flex flex-col box-border border-8 border-black bg-color2 }
+
+  .bg-gradient1 { @apply bg-gradient-to-b from-color2 to-color1 }
+  .bg-gradient2 { @apply bg-gradient-to-b from-color1 to-color2 }
+  .bg-gradient3 { @apply bg-gradient-to-b from-color3 to-color4 }
+
+  .font-border { -webkit-text-stroke: 3px black }
 }
 
 /*altera dependendo da proporção de tela */
@@ -17,12 +23,14 @@
     height: 100%;
   }
 }
+
 @media (max-aspect-ratio: 16/9) {
   .aspect-full-height {
     width: 100%;
   }
 }
 
+/* Scroll css */
 .scrollbar::-webkit-scrollbar {
   width: 20px;
 }

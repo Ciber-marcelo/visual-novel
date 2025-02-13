@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ContextScene } from '@/contexts/context-scene';
 import { useContext } from 'react';
-import LoadCard from '../CardLoadSaveGame';
+import CardLoadSaveGame from '../CardLoadSaveGame';
 import ButtonMenu from '../ButtonMenu';
 
 export default function MenuLoadGame() {
@@ -39,28 +39,14 @@ export default function MenuLoadGame() {
    }
 
    return (
-      <div className='w-[1920px] h-[1080px] bg-gradient-to-b from-[#1D265D] to-[#3E4EB1] flex flex-col gap-5 justify-center items-center'>
-         <div className='text-white font-extrabold text-[36px] font-border'>
+      <div className='screen-FHD bg-gradient1 flex flex-col gap-5 justify-center items-center'>
+         <div className='text-colorText1 font-extrabold text-[36px] font-border'>
             CARREGAR
          </div>
-
-         <div className="
-            w-[481px] 
-            h-[670px] 
-            flex 
-            flex-col 
-            box-border 
-            p-3 
-            gap-3
-            border-8 
-            border-black 
-            bg-[#1D265D]
-            overflow-y-auto
-            scrollbar
-         ">
+         <div className="container-menu h-[670px] p-3 gap-3 overflow-y-auto scrollbar">
             {saveFiles.length > 0 && (
                saveFiles.map((file) => (
-                  <LoadCard
+                  <CardLoadSaveGame
                      key={file.fileName}
                      onclick={() => handleStartGame(file.content)}
                      deleteSave={() => handleDeleteSave(file.fileName)}
@@ -68,16 +54,7 @@ export default function MenuLoadGame() {
                ))
             )}
          </div>
-         <div className="
-            w-[481px] 
-            h-[120px] 
-            flex
-            box-border 
-            p-3 
-            border-8 
-            border-black 
-            bg-[#1D265D]
-         ">
+         <div className="container-menu p-3">
             <ButtonMenu name="VOLTAR" onClick={() => selectPage(1)} />
          </div>
       </div>

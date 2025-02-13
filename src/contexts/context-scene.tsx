@@ -90,7 +90,7 @@ export const ProviderScene = ({ children }: { children: React.ReactNode }) => {
    };
 
    //troca a pagina
-   const selectPage = (n: any) => {
+   const selectPage = (n: number) => {
       setPage(n)
    }
 

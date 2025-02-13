@@ -5,8 +5,8 @@ const fs = require('fs');
 function createWindow() {
   //aqui estão as configurações da aplicaçao, como por exemplo o tamanho da janela entre outros(pesquise para entedner melhor)
   const win = new BrowserWindow({
-    width: 800,
-    height: 479,
+    width: 960,
+    height: 540,
     minWidth: 400,
     minHeight: 254,
     webPreferences: {

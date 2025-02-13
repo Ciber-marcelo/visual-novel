@@ -57,7 +57,6 @@ export default function MenuSaveGame() {
          ))}
 
          {/* <ButtonSave name={'Salvar Jogo 1'} saveFileName={'savegame1.json'}/> */}
-         {/* <ButtonLoad name={'Carregar Jogo 1'} saveFileName={'savegame1.json'}/> */}
 
          <button onClick={() => selectPage(1)}>MENU</button>
          <button onClick={() => selectPage(2)}>GAME</button>

@@ -7,20 +7,11 @@ import MenuSaveGame from "../MenuSaveGame";
 
 export default function CurrentPage() {
    const { page } = useContext(ContextScene)
-
-   if (page === 1) {
-      return <MenuMain />;
+   const pages : { [key: number]: JSX.Element } = {
+      1: <MenuMain />,
+      2: <Scene />,
+      3: <MenuLoadGame />, 
+      4: <MenuSaveGame />,
    };
-
-   if (page === 2) {
-      return <Scene />;
-   };
-
-   if (page === 3) {
-      return <MenuLoadGame />;
-   };
-
-   if (page === 4) {
-      return <MenuSaveGame />;
-   };
+   return pages[page];
 }

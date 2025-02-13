@@ -23,7 +23,7 @@ export default function Input() {
          />
          <button
             onClick={info.name !== '' ? () => nextDialogue() : undefined}
-            className="bg-blue-500 text-white p-2 m-2 rounded-md hover:bg-blue-700"
+            className="bg-blue-500 text-colorText1 p-2 m-2 rounded-md hover:bg-blue-700"
          >
             Continue
          </button>

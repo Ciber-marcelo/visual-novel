@@ -1,9 +1,9 @@
 import { ContextScene } from '@/contexts/context-scene';
 import { useContext } from 'react';
-import CharImage from '../CharImage';
-import Dialogue from '../Dialogue';
-import Choices from '../Choices';
-import Input from '../Input';
+import CharImage from './CharImage';
+import Dialogue from './Dialogue';
+import Choices from './Choices';
+import Input from './Input';
 import Music from '../Music';
 
 export default function Scene() {

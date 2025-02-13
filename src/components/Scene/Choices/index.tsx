@@ -13,7 +13,7 @@ export default function Choices({ arr }: ChoicesProps) {
          {arr.choices.map((choice: any, index: any) => (
             <div 
                key={index} 
-               className='rounded-lg p-2 bg-blue-500 text-white hover:bg-blue-600 select-none'
+               className='rounded-lg p-2 bg-blue-500 text-colorText1 hover:bg-blue-600 select-none'
                onClick={() => { 
                   choice.nextScene ? selectedScene(choice.nextScene) : nextDialogue(); 
                   choice.placeInfo && placeInfo(choice.placeInfo); 

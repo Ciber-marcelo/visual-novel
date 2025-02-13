@@ -1,6 +1,7 @@
 import { ContextScene } from '@/contexts/context-scene';
 import { useContext } from 'react';
 
+// cria um type pra esse name e savefilename
 export default function ButtonSave({name, saveFileName}: any) {
    const { info, sceneNumber, currentDialogue } = useContext(ContextScene)
 
